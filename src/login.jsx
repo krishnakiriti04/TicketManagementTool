@@ -46,12 +46,22 @@ const Login = () => {
 
     return (
         <div className="container mt-3 login-div">
-            <div className="card col-6 card-bg text-center">
+            <div className="card col-lg-6 col-md-8 col-xs-12 card-bg text-center">
                    <h1>Login</h1>
-                <div className="card-body w-75 mx-auto">
+                <div className="card-body login-body">
                     <form className="form-group" onSubmit={loginFunc} method="POST">
-                        <input type="text" name="email" id="email" value={email} className="bg-light form-control mb-2" onChange={(e)=> setEmail(e.target.value)} placeholder="Email" required/>
-                        <input type="password" name="password" id="password" value={password} className="bg-light form-control mb-2" onChange={(e)=> setPassword(e.target.value)} placeholder="Password" required/>
+                    <div className="input-group">
+              <span>
+                <i className="fa fa-user login_icon"></i>
+              </span>
+              <input type="text" name="email" id="email" value={email} className="bg-light form-control mb-2" onChange={(e)=> setEmail(e.target.value)} placeholder="Email" required/>
+            </div>
+            <div className="input-group">
+              <span>
+                <i className="fa fa-lock login_icon"></i>
+              </span>
+              <input type="password" name="password" id="password" value={password} className="bg-light form-control mb-2" onChange={(e)=> setPassword(e.target.value)} placeholder="Password" required/>
+            </div>      
                         <button type="submit" className="btn btn-info px-3">Login {loading && <Spinner animation="border" variant="light" />} </button>
                     </form>
                     <div>

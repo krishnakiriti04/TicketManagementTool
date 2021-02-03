@@ -62,3 +62,33 @@ ul {
     justify-content: center;
     align-items: center;
 }
+
+.login_icon,
+.signup_icon {
+    padding: 11px;
+    background: gainsboro;
+    width: 35px
+}
+
+@media (max-width:576px) {
+    /* small */
+    .signup-body,
+    .login-body {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-body {
+        padding: 0 !important;
+    }
+}
+
+@media (min-width:576px) {
+    /* medium */
+    .signup-body,
+    .login-body {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
