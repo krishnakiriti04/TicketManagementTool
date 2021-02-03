@@ -26,10 +26,11 @@ const Layout = () => {
   }
 
    useEffect(()=>{
+     const ac = new AbortController();
     const getAgents = async()=>{
       let url = "https://freshdesk-clone.herokuapp.com/users/"
       //let url = 'http://localhost:4000/users/'
-        let response = await fetch(url);
+        let response = await fetch(url,{signal:ac.signal});
         let fetchedData = await response.json();
         let agentsArray = fetchedData.data.filter((val)=>val.role==="agent")
         setAgents(agentsArray);
@@ -37,7 +38,7 @@ const Layout = () => {
     const getData = async () => {
       let url = "https://freshdesk-clone.herokuapp.com/customer/tickets"
       //let url = "http://localhost:4000/customer/tickets"
-      let response = await fetch(url);
+      let response = await fetch(url,{signal:ac.signal});
       let apidata = await response.json();
       // if (apidata.data.length !== ticketData.length) {
         setTicketData(apidata.data);
@@ -45,6 +46,7 @@ const Layout = () => {
     };
     getData();
     getAgents();
+    return ()=>ac.abort();
   },[])
 
   return (

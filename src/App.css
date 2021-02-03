@@ -54,3 +54,11 @@ ul {
     cursor: pointer !important;
     /* box-shadow: 0 3px 3px 0 black !important; */
 }
+
+.login-div,
+.signup-div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

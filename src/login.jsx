@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Link, useHistory} from 'react-router-dom'
+import Spinner from 'react-bootstrap/Spinner';
 // import Tickets from './tickets';
 
 const Login = () => {
     let [email,setEmail] = useState("");
     let [password,setPassword] = useState("");
+    let [loading,setLoading] = useState(false);
     const history = useHistory();
 
     const loginFunc = async (event) =>{
+        setLoading(true);
         event.preventDefault();
         let data = {
             email : email,
@@ -26,7 +29,6 @@ const Login = () => {
         let Fetchdata = await response.json();
         //console.log("Fetched Data", Fetchdata);
         if(Fetchdata.status===200){
-            alert('Login success!!');
             localStorage.setItem('token',Fetchdata.token);
             if(Fetchdata.userDetails.role === "admin"){
                 history.replace('/layout');
@@ -39,17 +41,18 @@ const Login = () => {
         }
         setEmail("");
         setPassword("");
+        setLoading(false);
     }
 
     return (
-        <div className="container mt-3 d-flex justify-content-center">
+        <div className="container mt-3 login-div">
             <div className="card col-6 card-bg text-center">
                    <h1>Login</h1>
                 <div className="card-body w-75 mx-auto">
                     <form className="form-group" onSubmit={loginFunc} method="POST">
                         <input type="text" name="email" id="email" value={email} className="bg-light form-control mb-2" onChange={(e)=> setEmail(e.target.value)} placeholder="Email" required/>
                         <input type="password" name="password" id="password" value={password} className="bg-light form-control mb-2" onChange={(e)=> setPassword(e.target.value)} placeholder="Password" required/>
-                        <button type="submit" className="btn btn-info px-3">Login</button>
+                        <button type="submit" className="btn btn-info px-3">Login {loading && <Spinner animation="border" variant="light" />} </button>
                     </form>
                     <div>
                         <Link to="/layout">Forgot Password</Link>

@@ -2,7 +2,7 @@ import "./App.css";
 
 const TicketBody = ({ id, ticketData, handleDelete, openModal }) => {
   return (
-    <div>
+    <>
       <div className="card mt-2">
         <div className="row">
           <div className="card-body col-7">
@@ -32,7 +32,7 @@ const TicketBody = ({ id, ticketData, handleDelete, openModal }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

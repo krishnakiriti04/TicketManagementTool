@@ -1,3 +1,5 @@
+import Table from "react-bootstrap/Table"
+
 const Modal_styles = {
   position: "fixed",
   top: "50%",
@@ -34,27 +36,26 @@ const AgentsModal = ({ showModal, closeModal, data }) => {
         <div>
           <div className="card">
             <div className="card-body">
-              <ul className="list-group list-group-flush">
-                {data.map((agent) => {
+              <Table striped hover bordered responsive>
+                <thead>
+                  <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {data.map((agent,ind) => {
                   return (
-                    <li className="list-group-item">
-                      <div className="d-flex justify-content-between">
-                        <div>
-                          <h5>
-                            <b className="text-success">Name</b> :{" "}
-                            {agent.username}
-                          </h5>
-                        </div>
-                        <div>
-                          <h5>
-                            <b className="text-success">Email</b> :{" "}
-                            {agent.email}
-                          </h5>
-                        </div>
-                      </div>
-                    </li>
+                    <tr key={ind}>
+                      <td>{agent.username}</td>
+                      <td>{agent.email}</td>
+                    </tr>
                   );
                 })}
+                </tbody>
+              </Table>
+              <ul className="list-group list-group-flush">
+                
               </ul>
             </div>
           </div>

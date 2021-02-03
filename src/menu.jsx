@@ -10,17 +10,6 @@ const Menu = ({agents})=>{
     setDisplayModal(true);
   }
   
-  // useEffect(()=>{
-  //   const getAgents = async()=>{
-  //       let response = await fetch('http://localhost:4000/users/');
-  //       let fetchedData = await response.json();
-  //       let agentsArray = fetchedData.data.filter((val)=>val.role==="agent")
-  //       //console.log(agentsArray);
-  //       setAgents(agentsArray);
-  //   }
-  //   getAgents();
-  // },[displayModal])
-
 return (
     <div className="menu">
       <AgentsModal 

@@ -18,7 +18,7 @@ const Signup = () => {
             phone : phone,
             role : role
         }
-        console.log(data);
+        
         let url = "https://freshdesk-clone.herokuapp.com/api/register"
         //let url = 'http://localhost:4000/api/register'
         let response = await fetch(url,{
@@ -42,7 +42,7 @@ const Signup = () => {
     }
 
     return (
-        <div className="container mt-3 d-flex justify-content-center">
+        <div className="container mt-3 signup-div">
             <div className="card col-6 card-bg text-center">
                    <h1>Register</h1>
                 <div className="card-body w-75 mx-auto">

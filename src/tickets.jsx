@@ -9,7 +9,7 @@ const Tickets = ({agentsList}) => {
   
   let {tickets,searchdata} = useContext(TicketContext);
   let [ticketdata,setTicketdata] = tickets;
-  let [searchString,setSearchString] = searchdata;
+  let [searchString] = searchdata;
   let [modelData, setModeldata] = useState(null);
   let [displayModal, setDisplayModal] = useState(false);
 
@@ -45,9 +45,9 @@ const Tickets = ({agentsList}) => {
 
   return (
     <div>
-      { search(searchString) && search(searchString).map((val, ind) => {
+      { search(searchString) && search(searchString).map((val,ind) => {
         return (
-          <>
+          <div key={ind}>
             <Modal              
               showModal={displayModal}
               closeModal={() => setDisplayModal(false)}
@@ -62,7 +62,7 @@ const Tickets = ({agentsList}) => {
               handleDelete={handleDelete}
               openModal={() => openModal(ind)}
             />
-          </>
+          </div>
         );
       })}
     </div>
